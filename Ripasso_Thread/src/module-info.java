@@ -1,2 +1,0 @@
-module Ripasso_Thread {
-}
