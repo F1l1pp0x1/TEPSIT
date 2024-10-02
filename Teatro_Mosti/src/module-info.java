@@ -1,2 +1,0 @@
-module Teatro_Mosti {
-}
