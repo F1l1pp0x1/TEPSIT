@@ -1,0 +1,250 @@
+<!-- Per buildare il progetto fai click-destro sul nome del progetto, run as Maven build, e scrivi package nella casella Goals-->
+
+<!-- Per eseguire il progetto fai click-destro sul nome del progetto, run as Maven build, e scrivi jetty:run nella casella Goals-->
+
+
+
+<!--
+	i siti mostrano che il file segue il formato di un POM Maven
+	e che la versione xml è 4.0.0
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+	<!-- 
+		groupId: nome dell'organizzazione a cui appartiene il progetto 
+		artifactId: nome del progetto
+		versione del progetto è 0.0.1 pk la prima versione del progetto e SNAPSHOT perchè è ancora in sviluppo
+		packaging indica il tipo di pacchetto Maven: jar (java archive, per creare una libreria. Il codice compilato avrà estensione .jar)
+		o war (web application archive, per creare un'applicazione web. Il file compilato sarà .war e distribuito su web server come Tomcat o Jetty)
+	 -->
+	  <groupId>HelloMosti</groupId>
+	  <artifactId>maven-archetype-webapp</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	  <packaging>war</packaging>
+	
+	<!--
+		sono le dipendenze, cioè le librerie esterne a quelle già presenti in java, ma necessarie al progetto maven
+		
+		ogni dipendenza è descritta da:
+		-groupId è il nome del produttore della libreria
+		-artifactID è il nome della libreria
+		-version è la versione della libreria usata
+		-scope (opzionale) indica quando viene utilizzata la libreria. Per esempio
+				-compile (che è anche valore default se non si scrive scope) indica che la libreria è usata sia in compilazione sia in esecuzione del progetto
+				-test indica che la libreria è usata solo per fare test (non inclusa nel file .jar o .war). Sarà usata quando si fa mvn test
+				-provided indica che la libreria è usata solo per compilare (non inclusa nel file .jar o .war), perchè poi in esecuzione sarà il web server a offire queste librerie o simili per conto suo
+				-runtime indica che la libreria è usata solo in esecuzione, per ciò che viene usato dinamicamente
+	-->
+	  <dependencies>	
+	  	<!--
+			libreria Junit serve per fare i test
+		-->
+	    <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>4.13.1</version>
+	      <scope>test</scope>
+	    </dependency>
+	  	<!-- 
+			libreria  jersey-container-servlet serve per creare API REST (cioè API che usano http per comunicare)
+	  	-->
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>2.23.2</version>
+		</dependency>
+		<!-- 
+			libreria jersey-media-moxy converte oggetti Java in JSON/XML
+		-->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-moxy</artifactId>
+			<version>2.23.2</version> 
+		</dependency> 
+	       
+	    <dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>2.23.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.23.2</version>
+		</dependency>
+	 
+	 </dependencies>
+	
+	
+	
+	<!-- 
+		Definisce impostazioni della fase di build (compilazione)
+		-finalName è il nome del file compilato
+		-
+	-->
+	  <build>
+	  
+	    <finalName>hello-rest</finalName>
+	    
+	    <!--
+			Gestisce i plugin, che sono le estensioni alle capacità di Maven
+		-->
+	    <pluginManagement>
+	    
+	      <plugins>
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      	<!--
+				il plugin maven-clean-plugin pulisce il progetto, rimuovendo file temporanei creati nelle precedenti build
+			-->
+	        <plugin>
+	          <artifactId>maven-clean-plugin</artifactId>
+	          <version>3.4.0</version>
+	        </plugin>
+	        
+	        <!-- 
+				il plugin maven-resources-plugin: Gestisce le risorse (file non Java).
+			-->
+	        <plugin>
+	          <artifactId>maven-resources-plugin</artifactId>
+	          <version>3.3.1</version>
+	        </plugin>
+	        
+	        <!-- 
+				il plugin maven-compiler-plugin: Compila il codice Java.
+			-->
+	        <plugin>
+	          <artifactId>maven-compiler-plugin</artifactId>
+	          <version>3.13.0</version>
+	        </plugin>
+	        
+	        <!-- 
+				il plugin maven-surefire-plugin: Esegue i test unitari.
+			-->
+	        <plugin>
+	          <artifactId>maven-surefire-plugin</artifactId>
+	          <version>3.3.0</version>
+	        </plugin>
+	        
+	        <!-- 
+				il plugin maven-war-plugin: Crea un file WAR per applicazioni web.
+			-->
+	        <plugin>
+	          <artifactId>maven-war-plugin</artifactId>
+	          <version>3.4.0</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+	        </plugin>
+	        
+	        <!-- 
+				il plugin maven-install-plugin: Installa il file .jar o .war nel repository locale.
+			-->
+	        <plugin>
+	          <artifactId>maven-install-plugin</artifactId>
+	          <version>3.1.2</version>
+	        </plugin>
+	        
+	        <!-- 
+				il plugin maven-deploy-plugin: Carica l'artefatto in un repository remoto.
+			-->
+	        <plugin>
+	          <artifactId>maven-deploy-plugin</artifactId>
+	          <version>3.1.2</version>
+	        </plugin>
+	        
+	        <!-- 
+				il plugin jetty-maven-plugin: Esegue un server Jetty per il test delle applicazioni web.
+			-->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.3.11.v20160721</version>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+				</configuration>
+			
+	    		<dependencies>
+			        <!-- 
+						Le dipendeze che segueono sono necessarie per evitare problemi di dipendenze al momento dell'esecuzione quando si usa il goal
+						mvn jetty:run 
+						perchè le _ultime JVM_ non includono più JAX-RS
+					-->
+					<!-- 
+						libreria jaxb-api sono le interfacce che permettono a Jetty di gestire XML senza problemi (da Java 9 in poi non è più una libreria interna)
+					-->
+			        <dependency>
+			            <groupId>javax.xml.bind</groupId>
+			            <artifactId>jaxb-api</artifactId>
+			            <version>2.3.1</version>
+			        </dependency>
+			        <!-- 
+						libreria jaxb-core funziona insieme a jaxb-api e jaxb-impl.
+						Garantisce il corretto funzionamento di JAXB nei runtime (nelle esecuzioni) Java moderni
+					-->
+			        <dependency>
+			            <groupId>com.sun.xml.bind</groupId>
+			            <artifactId>jaxb-core</artifactId>
+			            <version>2.3.0.1</version>
+			        </dependency>
+			        <!-- 
+						libreria jaxb-impl fornisce il codice per usare le interfacce di jaxb-api. Serve per implementare effettivamente JAXB nella gestione XML
+					-->
+			        <dependency>
+			            <groupId>com.sun.xml.bind</groupId>
+			            <artifactId>jaxb-impl</artifactId>
+			            <version>2.3.1</version>
+			        </dependency>
+			        
+			    </dependencies>	
+			    	
+			</plugin>
+		
+	      </plugins>
+	    </pluginManagement>
+	    
+	  </build>
+</project>
+<!-- 
+	References:
+	Jersey - https://eclipse-ee4j.github.io/jersey/
+	Jersey 2.X Docs - https://eclipse-ee4j.github.io/jersey.github.io/documentation/latest/index.html
+	JAX-RS - https://en.wikipedia.org/wiki/Jakarta_RESTful_Web_Services
+	RESTEasy - https://resteasy.dev/books/
+	RESTEasy Docs - https://docs.resteasy.dev/6.2/userguide/
+-->

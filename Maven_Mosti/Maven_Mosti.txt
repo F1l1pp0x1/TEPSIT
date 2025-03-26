@@ -1,0 +1,4 @@
+https://github.com/F1l1pp0x1/TEPSIT/Maven_Mosti
+Porta 8080
+
+Il server effettua un reset di dati al momento in cui viene interrotta la sua esecuzione, qualora non siano i dati memorizzati in modo persistente tramite oggetti JSON o XML
